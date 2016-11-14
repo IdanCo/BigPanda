@@ -10,5 +10,6 @@
  */
 angular
   .module('pandaApp', [
-    'ngAnimate'
+    'ngAnimate',
+    'angular-md5'
   ]);

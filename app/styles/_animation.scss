@@ -1,0 +1,21 @@
+.comment {
+  &.ng-enter,
+  &.ng-leave
+  {
+    transition: 300ms linear all;
+    overflow: hidden;
+  }
+
+  &.ng-leave.ng-leave-active,
+  &.ng-enter {
+    opacity: 0;
+    height: 0;
+  }
+
+  &.ng-enter.ng-enter-active,
+  &.ng-leave {
+    opacity: 1;
+    height: 5rem;
+  }
+
+}

@@ -8,10 +8,17 @@
  * Controller of the pandaApp
  */
 angular.module('pandaApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, comments) {
+
+    // initialize comment
+    $scope.comment = {};
+
+    // initialize comments list
+    $scope.comments = comments.getComments();
+
+    $scope.addComment = function() {
+      comments.addComment($scope.comment.email, $scope.comment.message);
+      $scope.comment = {}; // reset fields
+    };
+
   });

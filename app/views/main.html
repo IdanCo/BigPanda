@@ -1,23 +1,30 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+    <div class="app-top clearfix p-2">
+      <form ng-submit="addComment()">
+        <div class="form-group email">
+          <input type="email" class="form-control" id="email" placeholder="Email" ng-model="comment.email">
+        </div>
+        <div class="form-group message">
+          <textarea class="form-control" id="message" rows="3" placeholder="Message" ng-model="comment.message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary float-sm-right text-uppercase">Submit</button>
+      </form>
+    </div>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+    <div class="app-bottom p-2" ng-if="comments.length">
+      <input class="form-control mb-2 filter" type="search" placeholder="Filter" ng-model="search">
+      <div ng-repeat="comment in comments | filter:search track by $index" class="clearfix comment">
+        <div class="comment-avatar float-xs-left mr-1 rounded">
+          <gravatar email="{{ comment.email }}"></gravatar>
+        </div>
+        <div class="comment-details">
+          <div class="email"><strong>{{ comment.email }}</strong></div>
+          <div class="message text-muted">{{ comment.message }}</div>
+        </div>
+      </div>
+    </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  </div>
 </div>
